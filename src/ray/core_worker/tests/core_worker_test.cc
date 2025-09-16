@@ -30,7 +30,7 @@
 #include "fakes/ray/pubsub/publisher.h"
 #include "fakes/ray/pubsub/subscriber.h"
 #include "fakes/ray/rpc/raylet/raylet_client.h"
-#include "mock/ray/gcs/gcs_client/gcs_client.h"
+#include "mock/ray/gcs_client/gcs_client.h"
 #include "mock/ray/object_manager/plasma/client.h"
 #include "ray/common/buffer.h"
 #include "ray/common/ray_config.h"
@@ -156,7 +156,7 @@ class CoreWorkerTest : public ::testing::Test {
         *memory_store_,
         *reference_counter_,
         [](const RayObject &object, const ObjectID &object_id) { return Status::OK(); },
-        [](TaskSpecification &spec, bool object_recovery, uint32_t delay_ms) {},
+        [](TaskSpecification &spec, uint32_t delay_ms) {},
         [](const TaskSpecification &spec) { return false; },
         [](const JobID &job_id,
            const std::string &type,
